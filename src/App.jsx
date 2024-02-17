@@ -1,12 +1,8 @@
-import Routes from './routes/routes'
-import './App.css'
+import Routes from "./routes/routes.jsx";
+import "./App.css";
 
 function App() {
-  
-
-  return (
-    <Routes/>
-  )
+  return <Routes />;
 }
 
-export default App
+export default App;
