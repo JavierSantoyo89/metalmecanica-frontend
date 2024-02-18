@@ -1,6 +1,7 @@
 import Footer from "../../components/parcial/footer/Footer";
 import Head from "../../components/parcial/head/Head";
 import Detail from "../../components/detail/Detail";
+
 export default function Dashboard() {
   return (
     <div>

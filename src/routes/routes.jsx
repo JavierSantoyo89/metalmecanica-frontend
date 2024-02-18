@@ -8,6 +8,7 @@ import Home from "../views/home/Home";
 import Error from "../views/error404/Error404";
 import Login from "../views/login/Login";
 import Dashboard from "../views/dashboard/Dashboard";
+import Settings from "../views/home/settings/Settings";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,8 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
   },
+  {path: "settings",
+element: <Settings/>}
 ]);
 
 const myRoutes = () => <RouterProvider router={router} />;

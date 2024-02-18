@@ -32,31 +32,34 @@ export default function Detail() {
     }
   }, []);
 
-
   setTimeout(() => {
     setContar(contar + 1);
   }, 1000);
 
   return (
     <>
-      
-        <h1>Detail</h1>
-        <p>Tiempo: {contar} seg.</p>
-        {isLoading ? <Loading /> : null}
-      
-      <h3>empleados</h3>
-      <Table.ScrollContainer minWidth={100}>
-        <Table verticalSpacing="xs">
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th>Id</Table.Th>
-              <Table.Th>Empleado</Table.Th>
-              <Table.Th>Puesto</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Table.Tbody>{rows}</Table.Tbody>
-        </Table>
-      </Table.ScrollContainer>
+      <h1>Detail</h1>
+      <p>Tiempo: {contar} seg.</p>
+      {/* //* If isLoading === true, show Loading component else show table //*/}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div>
+          <h3>empleados</h3>
+          <Table.ScrollContainer minWidth={100}>
+            <Table verticalSpacing="xs">
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Id</Table.Th>
+                  <Table.Th>Empleado</Table.Th>
+                  <Table.Th>Puesto</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{rows}</Table.Tbody>
+            </Table>
+          </Table.ScrollContainer>
+        </div>
+      )}
     </>
   );
 }

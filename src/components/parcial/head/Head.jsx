@@ -24,7 +24,7 @@ import {
 } from "@tabler/icons-react";
 import { MantineLogo } from "@mantinex/mantine-logo";
 import classes from "./HeaderTabs.module.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const user = {
   name: "Javier Santoyo",
@@ -35,6 +35,7 @@ const Tab = [
   { label: "Home", link: "/" },
   { label: "Login", link: "/login" },
   { label: "Dashboard", link: "/dashboard" },
+  { label: "Settings", link: "/settings" },
 ];
 
 export default function Head() {
@@ -44,7 +45,9 @@ export default function Head() {
 
   const items = Tab.map((tab) => (
     <Tabs.Tab value={tab.label} key={tab.label}>
-      <Link className={classes.link} to={tab.link}>{tab.label}</Link>
+      <Link className={classes.link} to={tab.link}>
+        {tab.label}
+      </Link>
     </Tabs.Tab>
   ));
 
@@ -124,16 +127,19 @@ export default function Head() {
               <Menu.Divider />
 
               <Menu.Label>Settings</Menu.Label>
+              <NavLink to="/settings">
               <Menu.Item
+                
                 leftSection={
                   <IconSettings
                     style={{ width: rem(16), height: rem(16) }}
                     stroke={1.5}
                   />
                 }
-              >
+                >
                 Account settings
               </Menu.Item>
+                </NavLink>
 
               <Menu.Item
                 leftSection={
