@@ -25,25 +25,25 @@ import {
 import { MantineLogo } from "@mantinex/mantine-logo";
 import classes from "./HeaderTabs.module.css";
 import { Link, NavLink } from "react-router-dom";
+import Links from "../../../routes/links";
 
 const user = {
   name: "Javier Santoyo",
   email: "javiersantoyo.dev",
   image: "https://avatars.githubusercontent.com/u/85984516?v=4",
 };
-const Tab = [
-  { label: "Home", link: "/" },
-  { label: "Login", link: "/login" },
-  { label: "Dashboard", link: "/dashboard" },
-  { label: "Settings", link: "/settings" },
-];
+// const Tab = [
+//   { label: "Home", link: "/" },
+//   { label: "Login", link: "/login" },
+//   { label: "Dashboard", link: "/dashboard" },
+// ];
 
 export default function Head() {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
-  const items = Tab.map((tab) => (
+  const items = Links.map((tab) => (
     <Tabs.Tab value={tab.label} key={tab.label}>
       <Link className={classes.link} to={tab.link}>
         {tab.label}
@@ -126,20 +126,19 @@ export default function Head() {
               </Menu.Item>
               <Menu.Divider />
 
-              <Menu.Label>Settings</Menu.Label>
               <NavLink to="/settings">
-              <Menu.Item
-                
-                leftSection={
-                  <IconSettings
-                    style={{ width: rem(16), height: rem(16) }}
-                    stroke={1.5}
-                  />
-                }
+                <Menu.Label>Settings</Menu.Label>
+                <Menu.Item
+                  leftSection={
+                    <IconSettings
+                      style={{ width: rem(16), height: rem(16) }}
+                      stroke={1.5}
+                    />
+                  }
                 >
-                Account settings
-              </Menu.Item>
-                </NavLink>
+                  Account settings
+                </Menu.Item>
+              </NavLink>
 
               <Menu.Item
                 leftSection={

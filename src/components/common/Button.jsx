@@ -1,6 +1,6 @@
 
-export default function Button() {
+export default function Button(buttonTypes, buttonTexts) {
   return (
-    <div>Button</div>
+    <Button type={buttonTypes}>{buttonTexts}</Button>
   )
 }

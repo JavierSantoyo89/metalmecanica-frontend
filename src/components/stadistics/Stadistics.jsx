@@ -1,29 +1,27 @@
+import { useEffect, useState } from "react";
 import Loading from "../common/loading/Loading";
 import useFetch from "../../hooks/useFetch";
-import { useEffect, useState } from "react";
-import { Table, Anchor } from "@mantine/core";
-
-export default function Detail() {
+import { Table } from "@mantine/core";
+export default function Stadistics() {
   const [contar, setContar] = useState(0);
   const { isLoading, data, getFetch } = useFetch();
   const rows = data.map((Data) => {
     return (
       <Table.Tr key={Data.id_employee}>
+        <Table.Td>{Data.id_stadistics}</Table.Td>
+        <Table.Td>{Data.status}</Table.Td>
+        <Table.Td>{Data.crud}</Table.Td>
+        <Table.Td>{Data.table}</Table.Td>
+        <Table.Td>{Data.project}</Table.Td>
+        <Table.Td>{Data.datetime}</Table.Td>
         <Table.Td>
-          <Anchor component="button" fz="sm">
-            {Data.id_employee}
-          </Anchor>
+          <button
+            onClick={() => console.log(Data.id_stadistics)}
+            value={Data.id_employee}
+          >
+            Detail
+          </button>
         </Table.Td>
-        <Table.Td>{Data.user_name}</Table.Td>
-        <Table.Td>
-          <Anchor component="button" fz="sm">
-            {Data.user_type}
-          </Anchor>
-        </Table.Td>
-        <Table.Td>
-          <button onClick={() => console.log(Data.id_employee)} value={Data.id_employee}>Detail</button>
-        </Table.Td>
-        
       </Table.Tr>
     );
   });
@@ -32,7 +30,7 @@ export default function Detail() {
     if (!getFetch()) {
       <Loading />;
     } else {
-      getFetch('/metalmecanica/employee/detailall');
+      getFetch("/stadistics");
     }
   }, []);
 
@@ -55,12 +53,14 @@ export default function Detail() {
               <Table.Thead>
                 <Table.Tr>
                   <Table.Th>Id</Table.Th>
-                  <Table.Th>Empleado</Table.Th>
-                  <Table.Th>Puesto</Table.Th>
-                  <Table.Th>Acciones</Table.Th>
+                  <Table.Th>Status</Table.Th>
+                  <Table.Th>CRUD</Table.Th>
+                  <Table.Th>Table</Table.Th>
+                  <Table.Th>Proyect</Table.Th>
+                  <Table.Th>Date</Table.Th>
                 </Table.Tr>
               </Table.Thead>
-              <Table.Tbody>{rows}</Table.Tbody>
+              <Table.Tbody key={data.id_stadistics}>{rows}</Table.Tbody>
             </Table>
           </Table.ScrollContainer>
         </div>

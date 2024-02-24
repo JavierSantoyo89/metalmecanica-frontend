@@ -3,11 +3,12 @@ const useFetch = () => {
   const [dataFetch, setDataFetch] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
-  const getFetch = async () => {
+  const getFetch = async (uslstring )=> {
     try {
       const response = await fetch(
-        "https://backendportfolio-r0uf.onrender.com/metalmecanica/employee/detailall"
+        `https://backendportfolio-r0uf.onrender.com${uslstring}`
       );
+      
       const dataFetch = await response.json();
       setDataFetch(dataFetch);
       setIsLoading(false);
