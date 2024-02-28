@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import Head from "../../components/parcial/head/Head";
 import Footer from "../../components/parcial/footer/Footer";
+import {useCounter} from "../../state/counter";
 export default function Login() {
   const {
     register,
@@ -11,6 +12,10 @@ export default function Login() {
     // event.preventDefault();
     console.log(data);
   };
+ const count = useCounter((state) =>  state.count)
+ const increment = useCounter((state) =>  state.increment)
+ const decrement = useCounter((state) =>  state.decrement)
+ const reset = useCounter((state) =>  state.reset)
   return (
     <div>
       <Head />
@@ -30,6 +35,12 @@ export default function Login() {
           (errors.password && <span>Password is required</span>)}
         <button type="submit">Login</button>
       </form>
+      <div>
+        <span>Contador: {count}</span>
+         <button onClick={increment}>Incrementar</button>
+ <button onClick={decrement}>Decrementar</button>
+        <button onClick={reset}>Reset</button>  
+      </div>
       <Footer />
     </div>
   );
